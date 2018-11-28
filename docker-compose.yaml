@@ -35,3 +35,19 @@ services:
    #Data Persistency
    # sudo mkdir -p /home/techx/containers/svr/docker/grafana/data ; chown 472:472 
    - /home/techx/containers/svr/docker/grafana/data:/var/lib/grafana
+
+
+ nginx:
+  build:
+   context: ./nginx
+   dockerfile: Dockerfile
+  container_name: cl-nginx
+  ports:
+   - "80:80"
+  links:
+   - grafana
+  volumes:
+   #Data Persistency
+   - /home/techx/containers/cltelemetry/nginx/nginx.conf:/etc/nginx/nginx.conf
+
+ 
